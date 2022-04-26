@@ -20,5 +20,5 @@
         => Convert.ToUInt32(amount + (amount * percent / 100.0));
 
     public override string ToString()
-        => $"ID : {ID}\nAmount : {Amount} + {Percent}% => {Payment}";
+        => $"Credit : {ID}\n\tAmount : {Amount} + {Percent}% => {Payment}";
 }

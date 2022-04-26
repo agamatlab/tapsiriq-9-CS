@@ -71,6 +71,7 @@ class Program
             Months = (byte)(random.Next(1, 6) * 12),
         };
 
+        credit.Payment = Credit.CalculatePercent(credit.Amount, credit.Percent);
         return credit;
     }
 
@@ -117,24 +118,30 @@ class Program
             bank.Managers = Extra.AddElement(bank.Managers, FakerManager());
         bank.CEO = FakerCEO();
 
-        foreach (var worker in bank.Workers)
-            Console.WriteLine(worker);
 
+        bank.ShowAllWorkers();
         Console.ReadKey();
         Console.Clear();
 
-        foreach (var client in bank.Clients)
-            Console.WriteLine(client);
 
+        bank.ShowAllClients();
         Console.ReadKey();
         Console.Clear();
 
-        foreach (var manager in bank.Managers)
-            Console.WriteLine(manager);
-
+        bank.ShowAllCredits();
         Console.ReadKey();
         Console.Clear();
 
-        Console.WriteLine(bank.CalculateProfit());
+        bank.ShowAllManagers();
+        Console.ReadKey();
+        Console.Clear();
+
+        Console.WriteLine($"Total Profit : {bank.CalculateProfit()}");
+        string? name = bank.Clients?.First().Name;
+        string? surname = bank.Clients?.First().Surname;
+
+        bank.ShowClientCredit(name, surname);
+        bank.PayCredit(bank.GetClient(name,surname), 1000);
+        bank.ShowClientCredit(name, surname);
     }
 }

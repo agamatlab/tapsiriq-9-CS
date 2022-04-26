@@ -28,13 +28,39 @@
     {
         if (Clients != null) foreach (var client in Clients)
                 if (client.Name == name && client.Surname == surname)
-                { Console.WriteLine(client.Credit); return; }
+                { Console.WriteLine(client?.Credit); return; }
     }
 
-    public void ShowAllCredit()
+    public Client? GetClient(string name, string surname)
+    {
+        if (Clients != null) foreach (var client in Clients)
+                if (client.Name == name && client.Surname == surname)
+                    return client;
+        return null;
+    }
+
+    public void ShowAllCredits()
     {
         if (Clients != null) foreach (var client in Clients)
                     Console.WriteLine(client.Credit);
+    }
+
+    public void ShowAllClients()
+    {
+        if (Clients != null) foreach (var client in Clients)
+                Console.WriteLine(client);
+    }
+
+    public void ShowAllWorkers()
+    {
+        if (Workers != null) foreach (var worker in Workers)
+                Console.WriteLine(worker);
+    }
+
+    public void ShowAllManagers()
+    {
+        if (Managers != null) foreach (var manager in Managers)
+                Console.WriteLine(manager);
     }
 
     public void PayCredit(Client clientIn, uint money)

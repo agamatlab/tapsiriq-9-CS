@@ -1,5 +1,6 @@
 ﻿class Client : Employee, IUnique
 {
+    public override string ToString() => $"{base.ToString()}\n\tClient : {ID}\n\tCredit : {Credit?.ID ?? null}";
     public Client(string name, string surname, byte age, string position, uint salary, string workAddress, string liveAddress) 
         : base(name, surname, age, position, salary) { WorkAddress = workAddress; LiveAddress = liveAddress; }
 
